@@ -3,15 +3,21 @@ package com.dominion.dominion_backend.models;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTest {
 
     Player player;
+    Season season;
+    ArrayList<Season> seasons;
 
     @BeforeEach
     void setUp() {
         player = new Player("Wielki Shu");
+        season = new Season(2);
+        seasons = new ArrayList<Season>();
     }
 
     @Test
@@ -56,5 +62,12 @@ public class PlayerTest {
     void setTotalAvPosition() {
         player.setTotalAvPosition(1.11111);
         assertEquals(1.11111, player.getTotalAvPosition());
+    }
+
+    @Test
+    void setSeasons() {
+        seasons.add(season);
+        player.setSeasons(seasons);
+        assertEquals(1, player.getSeasons().size());
     }
 }

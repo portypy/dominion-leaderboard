@@ -28,6 +28,10 @@ public class Player {
         this.seasons = new ArrayList<>();
     }
 
+    public Player(){
+
+    }
+
     public Long getId() {
         return id;
     }
