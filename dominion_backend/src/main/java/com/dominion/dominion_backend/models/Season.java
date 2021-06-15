@@ -1,18 +1,38 @@
 package com.dominion.dominion_backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "seasons")
 public class Season {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "season_number")
     private int seasonNumber;
+
+    @JsonIgnoreProperties(value = "season")
+    @OneToMany(mappedBy = "season", fetch = FetchType.LAZY)
     private List<Game> games;
+
+    @JsonIgnoreProperties(value = "seasons")
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            joinColumns = {@JoinColumn(name = "season_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "player_id", nullable = false, updatable = false)}
+    )
     private List<Player> players;
 
     public Season(int seasonNumber) {
         this.seasonNumber = seasonNumber;
-        this.games = new ArrayList<Game>();
-        this.players = new ArrayList<Player>();
+        this.games = new ArrayList<>();
+        this.players = new ArrayList<>();
     }
 
     public Season() {
