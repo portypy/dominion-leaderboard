@@ -43,6 +43,7 @@ public class Player {
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
+            name = "games_players",
             joinColumns = {@JoinColumn(name = "player_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "game_id", nullable = false, updatable = false)}
     )
