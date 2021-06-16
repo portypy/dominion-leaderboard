@@ -16,7 +16,7 @@ public class Game {
     @Column(name = "game_number")
     private int gameNumber;
 
-    @JsonIgnoreProperties(value = "games")
+    @JsonIgnoreProperties(value = {"games", "players", "seasons"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
@@ -25,7 +25,7 @@ public class Game {
     )
     private List<Player> players;
 
-    @JsonIgnoreProperties(value = "games")
+    @JsonIgnoreProperties(value = {"games", "seasons", "players"})
     @ManyToOne
     @JoinColumn(name = "season_id", nullable = false)
     private Season season;
