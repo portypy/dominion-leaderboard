@@ -29,7 +29,7 @@ public class Player {
     @Column(name = "total_av_position")
     private double totalAvPosition;
 
-    @JsonIgnoreProperties(value = {"players", "seasons"})
+    @JsonIgnoreProperties(value = {"players", "seasons", "games"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
@@ -39,7 +39,7 @@ public class Player {
     )
     private List<Season> seasons;
 
-    @JsonIgnoreProperties(value = {"players", "games"})
+    @JsonIgnoreProperties(value = {"players", "games", "seasons"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(

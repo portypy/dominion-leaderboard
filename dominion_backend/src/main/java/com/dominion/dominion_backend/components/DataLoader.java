@@ -58,5 +58,13 @@ public class DataLoader implements ApplicationRunner {
         game1.setPlayers(players);
         gameRepository.save(game1);
 
+        player1.setTotalGames(2);
+        player1.setTotalPoints(56);
+        player1.setSeasonGames(2);
+        player1.setSeasonPoints(56);
+        player1.setSeasonAvPosition(2);
+        player1.setTotalAvPosition(2);
+        playerRepository.save(player1);
+
     }
 }

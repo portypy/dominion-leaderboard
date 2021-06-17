@@ -16,11 +16,11 @@ public class Season {
     @Column(name = "season_number")
     private int seasonNumber;
 
-    @JsonIgnoreProperties(value = {"season", "games"})
+    @JsonIgnoreProperties(value = {"season", "games", "players"})
     @OneToMany(mappedBy = "season", fetch = FetchType.LAZY)
     private List<Game> games;
 
-    @JsonIgnoreProperties(value = {"seasons", "players"})
+    @JsonIgnoreProperties(value = {"seasons", "players", "games"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
