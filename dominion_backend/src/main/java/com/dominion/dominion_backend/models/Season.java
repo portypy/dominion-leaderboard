@@ -15,6 +15,8 @@ public class Season {
     private Long id;
     @Column(name = "season_number")
     private int seasonNumber;
+    @Column
+    private boolean completed;
 
     @JsonIgnoreProperties(value = {"season", "players"})
     @OneToMany(mappedBy = "season", fetch = FetchType.LAZY)
@@ -33,6 +35,7 @@ public class Season {
         this.seasonNumber = seasonNumber;
         this.games = new ArrayList<>();
         this.players = new ArrayList<>();
+        this.completed = false;
     }
 
     public Season() {
@@ -52,6 +55,14 @@ public class Season {
 
     public void setSeasonNumber(int seasonNumber) {
         this.seasonNumber = seasonNumber;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public List<Game> getGames() {

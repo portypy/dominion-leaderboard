@@ -42,4 +42,9 @@ public class SeasonTest {
         season.setPlayers(players);
         assertEquals(1, season.getPlayers().size());
     }
+
+    @Test void setSeasonAsCompleted() {
+        season.setCompleted(true);
+        assertEquals(true, season.isCompleted());
+    }
 }
