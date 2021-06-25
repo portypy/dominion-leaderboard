@@ -15,19 +15,19 @@ public class Season {
     private Long id;
     @Column(name = "season_number")
     private int seasonNumber;
-    @Column
+    @Column(name = "completed")
     private boolean completed;
 
-    @JsonIgnoreProperties(value = {"season", "players"})
+    @JsonIgnoreProperties(value = {"season", "players", "games", "seasons"})
     @OneToMany(mappedBy = "season", fetch = FetchType.LAZY)
     private List<Game> games;
 
-    @JsonIgnoreProperties(value = {"seasons", "games"})
+    @JsonIgnoreProperties(value = {"seasons", "games", "players", "season"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
-            joinColumns = {@JoinColumn(name = "season_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "player_id", nullable = false, updatable = false)}
+            joinColumns = {@JoinColumn(name = "season_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "player_id", nullable = false)}
     )
     private List<Player> players;
 

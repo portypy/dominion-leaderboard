@@ -109,9 +109,6 @@
                         <mxPoint x="61" y="483" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="43" value="JsonIgnore here?" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="553" y="48" width="40" height="20" as="geometry"/>
-                </mxCell>
                 <mxCell id="28" value="addPlayers()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="1" vertex="1">
                     <mxGeometry x="312" y="136" width="160" height="56" as="geometry"/>
                 </mxCell>

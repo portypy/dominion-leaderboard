@@ -2,6 +2,8 @@ package com.dominion.dominion_backend.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ public class Game {
     @Column(name = "game_number")
     private int gameNumber;
 
-    @JsonIgnoreProperties(value = {"games", "players", "season"})
+    @JsonIgnoreProperties(value = {"games", "players", "season", "seasons"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
@@ -25,8 +27,9 @@ public class Game {
     )
     private List<Player> players;
 
-    @JsonIgnoreProperties(value = {"season", "games"})
+    @JsonIgnoreProperties(value = {"season", "games", "seasons", "players"})
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "season_id", nullable = false)
     private Season season;
 
